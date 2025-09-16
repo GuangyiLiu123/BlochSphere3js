@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloch Sphere Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>🌐 Bloch Sphere Visualizer</h1>
+            <p>Interactive quantum state visualization and manipulation</p>
+        </header>
+        
+        <div class="main-container">
+            <!-- 3D Visualization Container -->
+            <div class="visualization-container">
+                <div id="three-container"></div>
+                <div class="info-overlay">
+                    <div class="coordinates">
+                        <span id="state-coords">|ψ⟩ = α|0⟩ + β|1⟩</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <div class="control-section">
+                    <h3>🎯 Quantum State</h3>
+                    <div class="slider-group">
+                        <label>
+                            θ (Theta): <span id="theta-value">0°</span>
+                            <input type="range" id="theta-slider" min="0" max="180" step="1" value="0">
+                        </label>
+                        <label>
+                            φ (Phi): <span id="phi-value">0°</span>
+                            <input type="range" id="phi-slider" min="0" max="360" step="1" value="0">
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>📐 Preset States</h3>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" data-state="ground">|0⟩</button>
+                        <button class="preset-btn" data-state="excited">|1⟩</button>
+                        <button class="preset-btn" data-state="plus">|+⟩</button>
+                        <button class="preset-btn" data-state="minus">|−⟩</button>
+                        <button class="preset-btn" data-state="right">|i⟩</button>
+                        <button class="preset-btn" data-state="left">|−i⟩</button>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>🔄 Quantum Gates</h3>
+                    <div class="gate-buttons">
+                        <button class="gate-btn" data-gate="x">Pauli-X</button>
+                        <button class="gate-btn" data-gate="y">Pauli-Y</button>
+                        <button class="gate-btn" data-gate="z">Pauli-Z</button>
+                        <button class="gate-btn" data-gate="h">Hadamard</button>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>📊 Measurement</h3>
+                    <div class="measurement-info">
+                        <div class="prob-display">
+                            <div class="prob-bar">
+                                <span>P(|0⟩) = <span id="prob-0">100%</span></span>
+                                <div class="bar"><div id="bar-0" class="fill"></div></div>
+                            </div>
+                            <div class="prob-bar">
+                                <span>P(|1⟩) = <span id="prob-1">0%</span></span>
+                                <div class="bar"><div id="bar-1" class="fill"></div></div>
+                            </div>
+                        </div>
+                        <button id="measure-btn" class="action-btn">🎲 Measure</button>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>⚙️ Settings</h3>
+                    <div class="settings">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="show-axes" checked>
+                            Show Coordinate Axes
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="show-sphere" checked>
+                            Show Sphere Wireframe
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="animate-gates">
+                            Animate Gate Operations
+                        </label>
+                        <button id="reset-btn" class="action-btn">🔄 Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="bloch-sphere.js"></script>
+</body>
+</html>

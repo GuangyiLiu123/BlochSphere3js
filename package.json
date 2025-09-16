@@ -1,0 +1,37 @@
+{
+  "name": "bloch-sphere-visualizer",
+  "version": "1.0.0",
+  "description": "Interactive Bloch sphere visualizer for quantum state manipulation and visualization",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx live-server --port=3000 --open=index.html",
+    "dev": "npx live-server --port=3000 --open=index.html --watch=.",
+    "build": "echo 'Build complete - static files ready for deployment'",
+    "serve": "npx http-server -p 3000 -o"
+  },
+  "keywords": [
+    "quantum",
+    "bloch-sphere",
+    "visualization",
+    "three.js",
+    "physics",
+    "quantum-computing"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "homepage": ".",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
