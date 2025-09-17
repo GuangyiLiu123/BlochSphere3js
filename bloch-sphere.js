@@ -360,7 +360,8 @@ class BlochSphereVisualizer {
     const betaStr = this.formatComplex(beta.real, beta.imag);
         
         const stateCoords = document.getElementById('state-coords');
-        stateCoords.textContent = `|ψ⟩ = ${alphaStr}|0⟩ + ${betaStr}|1⟩`;
+        stateCoords.textContent = `|ψ⟩ = ${alphaStr}|0⟩ + (${betaStr})|1⟩`;
+
     }
     
     updateProbabilities() {
@@ -424,12 +425,15 @@ class BlochSphereVisualizer {
     }
     
     applyPauliY() {
-        // Pauli-Y gate: rotation by π around Y-axis
+        // Fixed Pauli Y As before, what it did before was simply negate the phi angle
+        // Now, it actually rotates a half turn
         const newTheta = Math.PI - this.theta;
-        const newPhi = (-this.phi) % (2 * Math.PI);
+        let newPhi = (Math.PI - this.phi) % (2 * Math.PI);
         if (newPhi < 0) newPhi += 2 * Math.PI;
+
         this.animateToState(newTheta, newPhi);
     }
+
     
     applyPauliZ() {
         // Pauli-Z gate: rotation by π around Z-axis
